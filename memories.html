@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Our Memories 💞</title>
+
+<style>
+body {
+  margin:0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right,#ff9a9e,#fad0c4);
+  text-align:center;
+  color:white;
+  padding:20px;
+}
+
+/* Card */
+.card {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  border-radius:20px;
+  padding:25px;
+  max-width:850px;
+  margin:auto;
+  box-shadow: 0 0 25px rgba(0,0,0,0.3);
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(40px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+/* Image */
+img {
+  width:260px;
+  border-radius:20px;
+  margin-top:15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  transition:0.5s;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+
+/* Text */
+p {
+  font-size:18px;
+  line-height:1.7;
+  margin-top:20px;
+}
+
+/* Highlight */
+.highlight {
+  color:#fffacd;
+  font-weight:bold;
+}
+
+/* Button */
+button {
+  margin-top:25px;
+  padding:12px 25px;
+  font-size:16px;
+  border:none;
+  border-radius:25px;
+  background:white;
+  color:#ff4d6d;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Our Roller Coaster 🎢</h1>
+
+<!-- SLIDESHOW -->
+<img id="slide" src="photo1.jpg">
+
+<p id="storyText">
+Humari story sach me kisi roller coaster se kam nahi hai… 🎢❤️
+</p>
+
+<button onclick="location.href='final.html'">Final Surprise 🎁</button>
+
+</div>
+
+<script>
+let images = ["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg"];
+
+let texts = [
+"Humari story sach me kisi roller coaster se kam nahi hai… 🎢❤️",
+
+"Umang fest… tum dance kar rahi thi… aur main bas tumhe dekh raha tha… 💖",
+
+"Jab kisi aur ko tumse baat karte dekha… sach bolu… thoda jealous ho gaya tha 😅❤️",
+
+"Vaishali trip… wo bus journey… seat change karna sirf tumhare paas aane ke liye… 🚌💫",
+
+"Wo moment… jab hamare haath touch hue… ❤️ main explain hi nahi kar sakta kya feel hua…",
+
+"Us din laga… tum sirf crush nahi ho… tum meri story ho 💖"
+];
+
+let i = 0;
+
+setInterval(() => {
+  i = (i + 1) % images.length;
+  document.getElementById("slide").src = images[i];
+  document.getElementById("storyText").innerHTML = texts[i];
+}, 3000);
+</script>
+
+</body>
+</html>

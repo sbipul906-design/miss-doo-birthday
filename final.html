@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Birthday Miss Doo ❤️</title>
+
+<style>
+body {
+  margin:0;
+  font-family: 'Poppins', sans-serif;
+  background: black;
+  color:white;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* Center Content */
+.container {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+
+/* Glowing Text */
+h1 {
+  font-size:40px;
+  text-shadow: 0 0 20px #ff4d6d, 0 0 40px #ff4d6d;
+}
+
+/* Button */
+button {
+  margin-top:20px;
+  padding:12px 25px;
+  font-size:16px;
+  border:none;
+  border-radius:25px;
+  background:#ff4d6d;
+  color:white;
+  cursor:pointer;
+  box-shadow:0 0 15px #ff4d6d;
+}
+
+/* Video */
+video {
+  margin-top:20px;
+  border-radius:20px;
+  box-shadow:0 0 20px rgba(255,255,255,0.3);
+}
+
+/* Love Letter Popup */
+#letter {
+  display:none;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:rgba(0,0,0,0.9);
+  padding:25px;
+  border-radius:20px;
+  max-width:400px;
+  box-shadow:0 0 20px #ff4d6d;
+}
+
+/* Fireworks canvas */
+canvas {
+  position:fixed;
+  top:0;
+  left:0;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<div class="container">
+
+<h1>Happy Birthday Miss Doo ❤️🎂</h1>
+
+<p>You are my happiness… my peace… my everything 💖</p>
+
+<button onclick="playVideo()">Play My Message 🎥</button>
+
+<br>
+
+<video id="video" width="300" controls style="display:none;">
+  <source src="video.mp4" type="video/mp4">
+</video>
+
+<br>
+
+<button onclick="openLetter()">Open My Heart 💌</button>
+
+</div>
+
+<!-- LOVE LETTER -->
+<div id="letter">
+<p style="font-size:18px; line-height:1.6;">
+
+Miss Doo ❤️,<br><br>
+
+Tum meri life ka sabse beautiful part ho…  
+Tumhari wajah se life itni special lagti hai… 💖<br><br>
+
+Kabhi tum meri smile ho…  
+Kabhi meri peace…  
+Kabhi meri choti si bacchi…  
+Aur kabhi meri naughty partner 😏❤️<br><br>
+
+Bas ek baat hamesha yaad rakhna…  
+Chahe kuch bhi ho jaye…  
+
+Main hamesha tumse pyaar karta rahunga ❤️  
+
+</p>
+
+<button onclick="closeLetter()">Close</button>
+</div>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+  <source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Show video
+function playVideo(){
+  let v = document.getElementById("video");
+  v.style.display = "block";
+  v.play();
+}
+
+// Letter popup
+function openLetter(){
+  document.getElementById("letter").style.display = "block";
+}
+function closeLetter(){
+  document.getElementById("letter").style.display = "none";
+}
+
+// FIREWORKS
+let canvas = document.getElementById("fireworks");
+let ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+function createFirework() {
+  let x = Math.random() * canvas.width;
+  let y = Math.random() * canvas.height / 2;
+
+  for(let i=0;i<50;i++){
+    particles.push({
+      x:x,
+      y:y,
+      dx:(Math.random()-0.5)*5,
+      dy:(Math.random()-0.5)*5,
+      life:100
+    });
+  }
+}
+
+function animate(){
+  ctx.fillStyle = "rgba(0,0,0,0.2)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  particles.forEach((p,i)=>{
+    p.x += p.dx;
+    p.y += p.dy;
+    p.life--;
+
+    ctx.fillStyle = "pink";
+    ctx.fillRect(p.x,p.y,2,2);
+
+    if(p.life<=0) particles.splice(i,1);
+  });
+
+  requestAnimationFrame(animate);
+}
+
+setInterval(createFirework,800);
+animate();
+</script>
+
+</body>
+</html>
